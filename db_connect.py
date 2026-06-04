@@ -1,6 +1,6 @@
 import pymysql
 
-connection = pymysql.connect(user = 'root', password = 'SriKrishn@04', port=3306, database='krishna_db', charset='utf8', host='localhost')
+connection = pymysql.connect(user = 'root', password = 'mellogang@123', port=3306, database='mydb', charset='utf8', host='localhost')
 
 print('DB connected')
 
