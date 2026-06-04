@@ -2,7 +2,7 @@ import pymysql
 import db_connect2 as dbc2
 
 def insert_into_emp():
-    query = 'insert into emp(name, age, salary, phone) values(%s, %s, %s, %s)'
+    query = 'insert into employees(name, age, salary, phone) values(%s, %s, %s, %s)'
     try:
         connection = dbc2.db_connect()
         cursor = connection.cursor()

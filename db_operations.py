@@ -1,27 +1,10 @@
 import pymysql
 import db_connect2 as dbc2
 
-def db_connect():
-    connection = None
-    try :
-        connection = pymysql.connect(user = 'root', password = 'SriKrishn@04', port=3306, database='krishna_db', charset='utf8', host='localhost')
-        print('DB connected')
-    except Exception as e:
-        print('DB connection failed')
-    return connection
-    
-def db_disconnect(connection):
-    try:
-        connection.close()
-        print('DB disconnected')
-    except:
-        print('DB disconnection failed')
-
-
 def create_db():
     query = 'create database if not exists krishna_db'
     try:
-        connection = dbc2.db_connect()
+        connection = dbc2.db_connect(db_name=None)
         cursor = connection.cursor()
         result = cursor.execute(query)
         connection.commit()
@@ -137,7 +120,7 @@ def list_employees():
         connection = dbc2.db_connect()
         cursor = connection.cursor()
         cursor.execute(query)
-        rows = cursor.fetchmany()
+        rows = cursor.fetchall()
         if rows:
             for row in rows:
                 print(row)
