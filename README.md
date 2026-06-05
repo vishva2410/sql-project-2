@@ -24,16 +24,43 @@ Before running the scripts, make sure you have the following installed on your m
    ```
 
 3. **Update Database Credentials:**
-   The project connects to a local MySQL instance using hardcoded credentials. Open `db_connect.py` and `db_connect2.py` and update the database credentials (like `user`, `password`, `port`, `host`) to match your local MySQL configuration.
+   The project connects to a local MySQL instance using environment variables. You must set the database credentials by setting the following environment variables (`DB_PASSWORD` is required):
+   - `DB_USER` (default: 'root')
+   - `DB_PASSWORD` (required)
+   - `DB_HOST` (default: 'localhost')
+   - `DB_PORT` (default: 3306)
 
-   Example in `db_connect2.py`:
-   ```python
-   connection = pymysql.connect(user='root', password='your_password', port=3306, charset='utf8', host='localhost')
+   Example for setting environment variables on Linux/macOS:
+   ```sh
+   export DB_USER='root'
+   export DB_PASSWORD='your_password'
+   export DB_HOST='localhost'
+   export DB_PORT='3306'
    ```
 
 ## Usage
 
-Follow these steps to run the scripts in the correct order:
+You can use the new interactive CLI to run all database operations:
+
+```sh
+python main.py
+```
+
+This will launch a text-based menu that allows you to easily perform all operations without manually running scripts or editing the code.
+
+```text
+--- Employee Database Management ---
+1. Create Database
+2. Create Table
+3. Insert Employee
+4. Update Employee Salary
+5. Delete Employee
+6. Search Employee
+7. List All Employees
+8. Exit
+```
+
+### Alternatively, run individual scripts:
 
 1. **Create the Database and Table**
    Run the following script to create the `krishna_db` database and the `employees` table:
@@ -53,7 +80,7 @@ Follow these steps to run the scripts in the correct order:
      ```sh
      python insert_into_employee.py
      ```
-   - Use the comprehensive operations script which provides functions to insert, update, delete, search, and list employees (Note: You can uncomment the relevant function calls at the bottom of the script to test them):
+   - Use the comprehensive operations script which provides functions to insert, update, delete, search, and list employees:
      ```sh
      python db_operations.py
      ```
