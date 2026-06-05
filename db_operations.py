@@ -131,4 +131,5 @@ def list_employees():
     except Exception as e:
         print('Employee listing failed', e)
 
-list_employees()
+if __name__ == '__main__':
+    list_employees()
