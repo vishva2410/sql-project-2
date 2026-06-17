@@ -80,6 +80,11 @@ def update_employee():
 
 def delete_employee():
     id = int(input('Enter id of the employee to be deleted : '))
+    confirm = input(f'Are you sure you want to delete employee with id {id}? (y/n): ')
+    if confirm.lower() != 'y':
+        print('Deletion cancelled.')
+        return
+
     query = 'delete from employees where id=%s'
     try:
         connection = dbc2.db_connect()
