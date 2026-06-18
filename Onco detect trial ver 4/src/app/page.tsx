@@ -1,4 +1,4 @@
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { RiskChart } from "@/components/ui/Chart";
 import { Activity, Brain, ShieldAlert, ScanLine } from "lucide-react";
