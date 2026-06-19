@@ -58,9 +58,10 @@ export const Button: React.FC<ButtonProps> = ({
     fontWeight: 'bold',
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
-    cursor: 'pointer',
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
     transition: 'var(--transition)',
     width: fullWidth ? '100%' : 'auto',
+    opacity: props.disabled ? 0.6 : 1,
     ...getVariantStyles(),
     ...getSizeStyles(),
     ...style,
@@ -71,6 +72,7 @@ export const Button: React.FC<ButtonProps> = ({
       style={baseStyles} 
       className={`hover-effect ${className}`}
       onMouseOver={(e) => {
+        if (props.disabled) return;
         if (variant === 'secondary' || variant === 'outline') {
           e.currentTarget.style.backgroundColor = 'var(--text-color)';
           e.currentTarget.style.color = 'var(--bg-color)';
@@ -79,6 +81,7 @@ export const Button: React.FC<ButtonProps> = ({
         }
       }}
       onMouseOut={(e) => {
+        if (props.disabled) return;
         if (variant === 'secondary') {
           e.currentTarget.style.backgroundColor = 'var(--bg-color)';
           e.currentTarget.style.color = 'var(--text-color)';

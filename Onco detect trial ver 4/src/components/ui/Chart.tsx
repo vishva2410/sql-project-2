@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 
 interface ChartProps {
-  data: any[];
+  data: Record<string, string | number>[];
   dataKey: string;
   name?: string;
   color?: string;

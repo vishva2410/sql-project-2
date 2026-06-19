@@ -108,6 +108,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
             fullWidth 
             size="lg"
             disabled={!file || isSubmitting}
+            aria-busy={isSubmitting}
           >
             {isSubmitting ? "PROCESSING MODELS..." : "RUN AI ANALYSIS"}
           </Button>
