@@ -17,6 +17,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
   const [symptoms, setSymptoms] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFileFocused, setIsFileFocused] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,12 +58,17 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
               backgroundColor: file ? "var(--hover-bg)" : "transparent",
               transition: "var(--transition)",
               cursor: "pointer",
-              position: "relative"
+              position: "relative",
+              outline: isFileFocused ? "2px solid var(--accent-color)" : "none",
+              outlineOffset: "4px"
             }} className="hover:bg-hover">
               <input 
                 type="file" 
                 accept="image/*" 
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
+                onFocus={() => setIsFileFocused(true)}
+                onBlur={() => setIsFileFocused(false)}
+                aria-label="Upload Medical Image"
                 required
                 style={{
                   position: "absolute",
@@ -87,6 +93,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
               <textarea
                 value={symptoms}
                 onChange={(e) => setSymptoms(e.target.value)}
+                aria-label="Clinical Symptoms"
                 placeholder="E.g., Patient reports a sudden change in mole color, occasional itching..."
                 style={{
                   width: "100%",
