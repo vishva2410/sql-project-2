@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { useRouter } from 'next/navigation';
-import { UploadCloud, FileText } from 'lucide-react';
+import { UploadCloud, FileText, Loader2 } from 'lucide-react';
 
 interface ScanFormProps {
   type: 'melanoma' | 'brain' | 'breast';
@@ -64,6 +64,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
                 accept="image/*" 
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
                 required
+                aria-label="Upload Medical Image"
                 style={{
                   position: "absolute",
                   top: 0, left: 0, width: "100%", height: "100%", opacity: 0, cursor: "pointer"
@@ -88,6 +89,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
                 value={symptoms}
                 onChange={(e) => setSymptoms(e.target.value)}
                 placeholder="E.g., Patient reports a sudden change in mole color, occasional itching..."
+                aria-label="Clinical Symptoms"
                 style={{
                   width: "100%",
                   minHeight: "150px",
@@ -109,7 +111,9 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
             size="lg"
             disabled={!file || isSubmitting}
             aria-busy={isSubmitting}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem" }}
           >
+            {isSubmitting && <Loader2 className="animate-spin" size={20} />}
             {isSubmitting ? "PROCESSING MODELS..." : "RUN AI ANALYSIS"}
           </Button>
         </form>
