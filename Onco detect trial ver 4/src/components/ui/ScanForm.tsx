@@ -60,20 +60,22 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
               position: "relative"
             }} className="hover:bg-hover">
               <input 
+                id="medical-image-upload"
                 type="file" 
                 accept="image/*" 
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
                 required
+                aria-label="Upload Medical Image"
                 style={{
                   position: "absolute",
                   top: 0, left: 0, width: "100%", height: "100%", opacity: 0, cursor: "pointer"
                 }}
               />
-              <UploadCloud size={48} style={{ margin: "0 auto 1rem auto", color: "var(--text-secondary)" }} />
-              <div style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>
+              <UploadCloud size={48} aria-hidden="true" style={{ margin: "0 auto 1rem auto", color: "var(--text-secondary)" }} />
+              <div style={{ fontWeight: "bold", marginBottom: "0.5rem" }} aria-hidden="true">
                 {file ? file.name : "Click or drag image to upload"}
               </div>
-              <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }} aria-hidden="true">
                 Supports JPG, PNG, DICOM (mocked) up to 20MB
               </p>
             </div>
@@ -84,7 +86,10 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
             
             <div style={{ position: "relative" }}>
               <FileText size={20} style={{ position: "absolute", top: "1rem", left: "1rem", color: "var(--text-secondary)" }} />
+              <label htmlFor="symptoms" className="sr-only">Clinical Symptoms</label>
               <textarea
+                id="symptoms"
+                aria-label="Clinical Symptoms"
                 value={symptoms}
                 onChange={(e) => setSymptoms(e.target.value)}
                 placeholder="E.g., Patient reports a sudden change in mole color, occasional itching..."
@@ -109,6 +114,7 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
             size="lg"
             disabled={!file || isSubmitting}
             aria-busy={isSubmitting}
+            title={!file ? "Please upload a medical image to proceed" : ""}
           >
             {isSubmitting ? "PROCESSING MODELS..." : "RUN AI ANALYSIS"}
           </Button>
