@@ -22,7 +22,7 @@ export default function Home() {
           <p style={{ color: "var(--text-secondary)", marginTop: "0.5rem" }}>AI Radiologist & Clinical Risk Assessment</p>
         </div>
         <div>
-          <Button variant="secondary" className="delay-100 animate-fade-in"><Activity size={18} style={{ marginRight: "0.5rem", display: "inline" }}/> Patient Portal</Button>
+          <Button variant="secondary" className="delay-100 animate-fade-in"><Activity size={18} style={{ marginRight: "0.5rem", display: "inline" }} aria-hidden="true"/> Patient Portal</Button>
         </div>
       </header>
 
@@ -32,21 +32,21 @@ export default function Home() {
           <Card className="delay-100 animate-fade-in" hoverable>
             <h4 style={{ color: "var(--text-secondary)", fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.5rem" }}>Last Scan</h4>
             <div style={{ fontSize: "1.5rem", fontWeight: "bold", display: "flex", alignItems: "center" }}>
-              <ScanLine size={24} style={{ marginRight: "0.5rem", color: "var(--text-secondary)" }}/> 
+              <ScanLine size={24} style={{ marginRight: "0.5rem", color: "var(--text-secondary)" }} aria-hidden="true"/>
               Negative
             </div>
           </Card>
           <Card className="delay-200 animate-fade-in" hoverable>
              <h4 style={{ color: "var(--text-secondary)", fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.5rem" }}>Overall Risk</h4>
             <div style={{ fontSize: "1.5rem", fontWeight: "bold", display: "flex", alignItems: "center" }}>
-              <ShieldAlert size={24} style={{ marginRight: "0.5rem", color: "var(--chart-color-2)" }}/> 
+              <ShieldAlert size={24} style={{ marginRight: "0.5rem", color: "var(--chart-color-2)" }} aria-hidden="true"/>
               15% / Low
             </div>
           </Card>
            <Card className="delay-300 animate-fade-in" hoverable>
              <h4 style={{ color: "var(--text-secondary)", fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.5rem" }}>Analyses Computed</h4>
             <div style={{ fontSize: "1.5rem", fontWeight: "bold", display: "flex", alignItems: "center" }}>
-              <Brain size={24} style={{ marginRight: "0.5rem", color: "var(--chart-color-1)" }}/> 
+              <Brain size={24} style={{ marginRight: "0.5rem", color: "var(--chart-color-1)" }} aria-hidden="true"/>
               12 Scans
             </div>
           </Card>
