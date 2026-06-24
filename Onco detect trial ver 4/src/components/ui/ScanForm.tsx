@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { useRouter } from 'next/navigation';
-import { UploadCloud, FileText } from 'lucide-react';
+import { UploadCloud, FileText, Loader2 } from 'lucide-react';
 
 interface ScanFormProps {
   type: 'melanoma' | 'brain' | 'breast';
@@ -116,7 +116,12 @@ export const ScanForm: React.FC<ScanFormProps> = ({ type, title, description }) 
             aria-busy={isSubmitting}
             title={!file ? "Please upload a medical image to proceed" : ""}
           >
-            {isSubmitting ? "PROCESSING MODELS..." : "RUN AI ANALYSIS"}
+            {isSubmitting ? (
+              <span className="flex items-center justify-center">
+                <Loader2 className="animate-spin" size={20} style={{ marginRight: '0.5rem' }} aria-hidden="true" />
+                PROCESSING MODELS...
+              </span>
+            ) : "RUN AI ANALYSIS"}
           </Button>
         </form>
       </div>

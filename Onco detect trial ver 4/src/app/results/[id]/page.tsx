@@ -44,7 +44,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
   if (isLoading) {
     return (
       <div className="container flex-col items-center justify-center animate-fade-in" style={{ height: "80vh" }}>
-        <HeartPulse size={64} style={{ color: "var(--text-secondary)", marginBottom: "2rem", animation: "pulse 1.5s infinite" }} />
+        <HeartPulse size={64} style={{ color: "var(--text-secondary)", marginBottom: "2rem", animation: "pulse 1.5s infinite" }} aria-hidden="true" />
         <h2 style={{ fontSize: "2rem", fontWeight: "bold", borderBottom: "2px solid var(--border-color)", paddingBottom: "0.5rem" }}>
           ANALYZING SCAN...
         </h2>
@@ -102,7 +102,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
           {report.riskLevel === 'HIGH' && (
             <Card style={{ backgroundColor: "var(--danger-bg)", borderColor: "var(--danger-color)", color: "var(--danger-color)" }}>
               <div style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-                <AlertOctagon size={24} style={{ marginRight: "0.5rem" }} />
+                <AlertOctagon size={24} style={{ marginRight: "0.5rem" }} aria-hidden="true" />
                 <h3 style={{ fontWeight: "bold", fontSize: "1.25rem" }}>HIGH RISK DETECTED</h3>
               </div>
               <p style={{ marginBottom: "1.5rem", fontSize: "0.875rem" }}>
@@ -111,7 +111,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
               
               <div style={{ padding: "1rem", backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid var(--danger-color)" }}>
                 <h4 style={{ fontWeight: "bold", marginBottom: "0.5rem", display: "flex", alignItems: "center" }}>
-                  <MapPin size={16} style={{ marginRight: "0.5rem" }} /> Nearest Hospital Centers
+                  <MapPin size={16} style={{ marginRight: "0.5rem" }} aria-hidden="true" /> Nearest Hospital Centers
                 </h4>
                 <ul style={{ fontSize: "0.875rem", listStyle: "none", padding: 0 }}>
                   <li style={{ padding: "0.5rem 0", borderBottom: "1px dashed var(--danger-color)" }}>
@@ -144,7 +144,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
             </div>
 
             <div style={{ marginTop: "2rem", padding: "1rem", border: "1px solid var(--border-color)", display: "flex", alignItems: "center", color: "var(--text-secondary)", fontSize: "0.875rem" }}>
-              <Info size={16} style={{ marginRight: "0.5rem", flexShrink: 0 }} />
+              <Info size={16} style={{ marginRight: "0.5rem", flexShrink: 0 }} aria-hidden="true" />
               Information provided is probabilistic. Algorithms are trained on clinical data but cannot replace professional histopathology or radiologic overreading.
             </div>
           </Card>
